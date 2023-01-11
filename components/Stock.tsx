@@ -24,7 +24,7 @@ export default function Stock() {
   return (
     <View>
       <Text style={{color: '#333', fontSize: 24}}>Lagerförteckning</Text>
-      <StockList/>
+      <StockList />
     </View>
   );
 }
