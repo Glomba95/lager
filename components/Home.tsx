@@ -1,24 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, Image, ScrollView, StyleSheet } from 'react-native';
-import Stock from './Stock';
-import warehouse from './../assets/warehouse.jpg';
+import { Text, Image, ScrollView } from 'react-native';
+import { Base, Typography } from '../styles';
+import warehouse from '../assets/warehouse.jpg';
 
-export default function Home() {
+import Stock from './Stock';
+
+export default function Home({route, products, setProducts}) {
   return (
-      <ScrollView style={styles.base}>
-        <Text style={{color: '#33c', fontSize: 42}}>Lager-Appen</Text>
-        <Image source={warehouse} style={{ width: 320, height: 240 }} />
-        <Stock />
-        <StatusBar style="auto" />
+      <ScrollView style={Base.base}>
+          <Text style={Typography.header1}>Lager-Appen</Text>
+          <Image source={warehouse} style={{ width: 320, height: 240, marginBottom: 28 }} />
+          <Stock products={products} setProducts={setProducts} />
       </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  base: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingLeft: 12,
-    paddingRight: 12,
-  },
-});
