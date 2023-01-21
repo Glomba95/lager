@@ -30,13 +30,8 @@ function StockList({products, setProducts}) {
 export default function Stock({products, setProducts}) {
   return (
     <View>
-<<<<<<< HEAD
-      <Text style={{color: '#333', fontSize: 24}}>Lagerförteckning</Text>
-      <StockList />
-=======
       <Text style={{...Typography.header2}}>Lagerförteckning</Text>
       <StockList products={products} setProducts={setProducts}/>
->>>>>>> ff5c9e2 (kmom02 done)
     </View>
   );
 }
