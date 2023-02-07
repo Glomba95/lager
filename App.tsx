@@ -8,17 +8,19 @@ import { Base } from './styles';
 
 import Home from "./components/Home";
 import Pick from "./components/Pick";
-import Product from './interfaces/product';
+import Deliveries from './components/Deliveries';
+// import Product from './interfaces/product';
 
 const routeIcons = {
   "Lager": "home",
   "Plock": "list",
+  "Leveranser": "ios-car",
 };
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  // ? useState<Product[]>([]);
+  // REVIEW useState<Product[]>([]); Varför fungerar det inte?
   const [products, setProducts] = useState([]);
 
   return (
@@ -32,6 +34,7 @@ export default function App() {
             },
             tabBarActiveTintColor: 'blue',
             tabBarInactiveTintColor: 'gray',
+            headerShown: false,
           })}
         >
           <Tab.Screen name="Lager">
@@ -39,6 +42,9 @@ export default function App() {
           </Tab.Screen>
           <Tab.Screen name="Plock">
             {() => < Pick setProducts={setProducts} />}
+          </Tab.Screen>
+          <Tab.Screen name="Leveranser">
+          {()=> <Deliveries products={products} setProducts={setProducts} />}
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>

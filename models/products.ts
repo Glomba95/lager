@@ -10,14 +10,17 @@ const products = {
         return result.data;
     },
     updateProduct: async function updateProduct(product: Partial<Product>) {
+        product.api_key = config.api_key;
+        
         try {
-            await fetch(`${config.base_url}/products?api_key=${config.api_key}`, {
+            await fetch(`${config.base_url}/products`, {
                 body: JSON.stringify(product),
                 headers: {
                     'content-type': 'application/json'
                 },
                 method: 'PUT'
             });
+
         } catch (error) {
             console.log("Error occured when updating product.");      
         }  

@@ -6,7 +6,7 @@ import Order from "../interfaces/order";
 import OrderItem from "../interfaces/order_item";
 
 const orders = {
-    getOrders: async function getOrders(): Promise<Order[]> {
+    getOrders: async function getOrders() {
         const response = await fetch(`${config.base_url}/orders?api_key=${config.api_key}`);
         const result = await response.json();
 
@@ -34,8 +34,10 @@ const orders = {
         await orders.updateOrder(updatedOrder);
     },
     updateOrder: async function updateOrder(order: Partial<Order>) {
+        order.api_key = config.api_key;
+        
         try {
-            await fetch(`${config.base_url}/orders?api_key=${config.api_key}`, {
+            await fetch(`${config.base_url}/orders`, {
                 body: JSON.stringify(order),
                 headers: {
                     'content-type': 'application/json'

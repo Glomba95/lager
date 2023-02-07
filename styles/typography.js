@@ -1,12 +1,14 @@
-import { BottomTabBarHeightCallbackContext } from "@react-navigation/bottom-tabs";
+// import { BottomTabBarHeightCallbackContext } from "@react-navigation/bottom-tabs";
 
 export const header1 = {
     fontSize: 42,
+    marginLeft: 18,
     marginBottom: 28,
 };
 
 export const header2 = {
     fontSize: 34,
+    marginLeft: 18,
     marginBottom: 28,
 };
 
@@ -59,6 +61,12 @@ export const tag = {
 
 export const right = {
     textAlign: right,
+};
+
+export const label = {
+    // textTransform: 'uppercase',
+    fontSize: 16,
+    color: "#555",
 };
 
 

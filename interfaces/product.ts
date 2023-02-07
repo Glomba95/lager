@@ -7,4 +7,5 @@ export default interface Product {
     stock: number,
     location: string,
     price: number,
+    api_key?: string,
 };

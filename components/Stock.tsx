@@ -5,10 +5,15 @@ import productModel from "../models/products";
 
 import { Typography } from "../styles";
 
-
+// FIXME Varför uppdateras inte saldot efter inlev?
+// Skulle det fungera att ersätta [] med {products}?
 function StockList({products, setProducts}) {
-  useEffect(async () => {
-    setProducts(await productModel.getProducts());
+  useEffect(() => {
+    async function setProductsAsync() {
+      setProducts(await productModel.getProducts());
+    };
+    
+    setProductsAsync();
   }, [])
 
   const list = products.map((product, index) => {
