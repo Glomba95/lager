@@ -1,6 +1,6 @@
 // FIXME expo skall vara en länk på formen https://expo.dev/@username/repo
 
 {
-    "expo": "https://expo.dev/@abhgah/lager?serviceType=classic&distribution=expo-go",
-    "github": "https://github.com/Glomba95/lager.git"
+    "expo": "https://exp.host/@Glomba/lager",
+    "github": "https://github.com/Glomba95/lager"
 }
