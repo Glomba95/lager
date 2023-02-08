@@ -28,28 +28,27 @@ export default function DeliveriesList({ route, navigation }) {
             <View
                 key={index}
                 style={Cards.card}>
-                <Text style={Cards.cardTitle}>{ delivery.product_id } | { delivery.amount }</Text>
+                <Text style={Cards.cardTitle}>{ delivery.product_name } - { delivery.amount } st</Text>
                 <Text style={Cards.cardInfo}>Levererad: { delivery.delivery_date }</Text>
                 <Text style={ Cards.cardInfo }>Kommentar: {delivery.comment}</Text>
             </View>
         );
     });
     
-    
     return (
         <View style={Base.base}>
             <Text style={Typography.header2}>Inleveranser</Text>
             <ScrollView>
                 <View style={Cards.cardContainer}>
-                    <Button
-                            title="Skapa ny inleverans"
-                            onPress={() => {
-                                navigation.navigate('Form');
-                            }}
-                        />
                     {listOfDeliveries.length === 0 
-                        ? <Text>"Inga registrerade inleveranser."</Text> 
+                        ? <Text style={Typography.normal}>Inga inleveranser finns registrerade.</Text> 
                         : listOfDeliveries}
+                    <Button
+                        title="Skapa ny inleverans"
+                        onPress={() => {
+                            navigation.navigate('Form');
+                        }}
+                    />
                 </View>
             </ScrollView>
         </View>

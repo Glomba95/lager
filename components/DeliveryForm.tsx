@@ -14,24 +14,25 @@ import Product from '../interfaces/product';
 
 
 export default function DeliveryForm({ navigation, products, setProducts }) {
-    const [delivery, setDelivery] = useState<Partial<Delivery>>({});
+    const [delivery, setDelivery] = useState<Partial<Delivery>>({
+        delivery_date: new Date().toLocaleDateString('se-SV')
+    });
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
     
-    async function addDelivery() {
-        console.log("addDelivery", delivery);
+    function validateForm() {
+        return !!delivery.product_id && !!delivery.amount && !!delivery.delivery_date;
+    }
     
+    async function addDelivery() {
         await deliveryModel.addDelivery(delivery);
 
         const updatedProduct = {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0)
         };
-        
-        console.log("cProd", currentProduct);
-        console.log("uProd", updatedProduct);
 
         await productModel.updateProduct(updatedProduct);
-        // Testar om update fungerar
+
         setProducts(await productModel.getProducts());
 
         navigation.navigate("List", { reload: true });
@@ -44,7 +45,6 @@ export default function DeliveryForm({ navigation, products, setProducts }) {
             <Text style={ Typography.label }>Produkt</Text>
             <ProductDropDown
                 products={products}
-                setProducts={setProducts}
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
@@ -77,8 +77,9 @@ export default function DeliveryForm({ navigation, products, setProducts }) {
 
             <Button
                 title="Gör inleverans"
+                disabled={!validateForm()}
                 onPress={() => {
-                    addDelivery();
+                    validateForm();
                 }}
             />
         </ScrollView>

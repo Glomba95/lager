@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { View, Text, Button } from "react-native";
+import { Base, Typography } from '../styles';
 
+import Order from "../interfaces/order";
 import orderModel from "../models/orders";
-import { Typography } from '../styles';
 
 
 export default function OrderList({ route, navigation }) {
     const { reload } = route.params || false;
-    const [allOrders, setAllOrders] = useState([]);
+    const [allOrders, setAllOrders] = useState<Order[]>([]);
     
     if (reload) {
         reloadOrders();
@@ -24,20 +25,24 @@ export default function OrderList({ route, navigation }) {
     const listOfOrders = allOrders
         .filter(order => order.status === "Ny")
         .map((order, index) => {
-            return <Button
-                title={order.name}
-                key={index}
-                onPress={() => {
-                    navigation.navigate('Details', {
-                        order: order
-                    });
-                }}
-            />
+            return (
+                <Button
+                    title={order.name}
+                    key={index}
+                    onPress={() => {
+                        navigation.navigate('Details', {
+                            order: order
+                        });
+                    }}
+                />
+            );
         });
 
     return (
-        <View>
-            <Text style={ Typography.header3 }>Ordrar redo att plockas</Text>
+        <View style={Base.base}>
+            <Text style={Typography.header2}>
+                Ordrar redo att plockas
+            </Text>
             {listOfOrders}
         </View>
     );

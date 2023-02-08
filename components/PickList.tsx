@@ -8,16 +8,16 @@ import Product from "../interfaces/product";
 
 import { Base, Typography } from "../styles";
 
-export default function PickList({ route, navigation, setProducts }) {
+export default function PickList({route, navigation, setProducts}) {
     const { order } = route.params;
-    const [orderedProducts, setOrderedProducts] = useState<Product[]>([]);
+    const [orderedItems, setOrderedItems] = useState<Product[]>([]);
 
     useEffect(() => {
-        async function  setOrderedProductsAsync(){
-            setOrderedProducts(await productModel.getProducts());
+        async function  setOrderedItemsAsync(){
+            setOrderedItems(await productModel.getProducts());
         }
         
-        setOrderedProductsAsync();
+        setOrderedItemsAsync();
     }, []);
 
     async function pick() {
@@ -29,7 +29,7 @@ export default function PickList({ route, navigation, setProducts }) {
     let missingStock: boolean = false;
 
     const orderItemsList = order.order_items.map((item, index) => {
-        let product = orderedProducts.find(product => product.id === item.product_id);
+        let product = orderedItems.find(product => product.id === item.product_id);
         let txtColor;
         
         
@@ -38,14 +38,15 @@ export default function PickList({ route, navigation, setProducts }) {
             txtColor = Typography.red;
         }
         
-        return <Text   
+        return (
+            <Text   
                 key={index}
                 style={[Typography.normal, txtColor]}
-                >
-                    <Text style={[Typography.tag]}>  {item.location}  </Text>
-                    <Text>  {item.name} - {item.amount} st </Text>
-                
-            </Text>;
+            >
+                <Text style={[Typography.tag]}>  {item.location}  </Text>
+                <Text>  {item.name} - {item.amount} st </Text>
+            </Text>
+        );
     });
 
     return (

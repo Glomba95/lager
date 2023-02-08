@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
@@ -6,10 +6,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { Base } from './styles';
 
+import productModel from "./models/products";
+
 import Home from "./components/Home";
 import Pick from "./components/Pick";
 import Deliveries from './components/Deliveries';
-// import Product from './interfaces/product';
+
 
 const routeIcons = {
   "Lager": "home",
@@ -20,8 +22,13 @@ const routeIcons = {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  // REVIEW useState<Product[]>([]); Varför fungerar det inte?
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      setProducts(await productModel.getProducts());
+    })();
+  }, []);
 
   return (
     <SafeAreaView style={Base.container}>
@@ -38,7 +45,7 @@ export default function App() {
           })}
         >
           <Tab.Screen name="Lager">
-            {() => <Home products={products} setProducts={setProducts} />}
+            {() => <Home products={products} />}
           </Tab.Screen>
           <Tab.Screen name="Plock">
             {() => < Pick setProducts={setProducts} />}

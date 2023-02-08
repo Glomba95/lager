@@ -17,23 +17,6 @@ export const card = {
     width: '90%',
 };
 
-// export const card = {
-//     borderWidth: 1,
-//     borderColor: '#ccc',
-//     width: '100%',
-//     height: 225,
-//     display: 'flex',
-//     flexDirection: 'column',
-//     marginBottom: 1.96,
-// };
-
-// export const cardShadow = {
-//     shadowColor: 'black',
-//     shadowOffset: {width: 10, height: 10},
-//     shadowOpacity: 0.2,
-//     shadowRadius: 5,
-// };
-
 export const cardTitle = {
     fontSize: 18,
     display: 'block',
@@ -51,6 +34,25 @@ export const cardInfo = {
     paddingVertical: 4,
     paddingHorizontal: 12,
 };
+
+// export const card = {
+//     borderWidth: 1,
+//     borderColor: '#ccc',
+//     width: '100%',
+//     height: 225,
+//     display: 'flex',
+//     flexDirection: 'column',
+//     marginBottom: 1.96,
+// };
+
+// export const cardShadow = {
+//     shadowColor: 'black',
+//     shadowOffset: {width: 10, height: 10},
+//     shadowOpacity: 0.2,
+//     shadowRadius: 5,
+// };
+
+
 
 // .card {
 //     border: 1px solid #ccc;

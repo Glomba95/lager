@@ -1,28 +1,16 @@
-import { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
-
-import productModel from "../models/products";
-
+import { View, Text } from 'react-native';
 import { Typography } from "../styles";
 
-// FIXME Varför uppdateras inte saldot efter inlev?
-// Skulle det fungera att ersätta [] med {products}?
-function StockList({products, setProducts}) {
-  useEffect(() => {
-    async function setProductsAsync() {
-      setProducts(await productModel.getProducts());
-    };
-    
-    setProductsAsync();
-  }, [])
-
+function StockList({products}) {
   const list = products.map((product, index) => {
-    return <Text
-            key={index}
-            style={{ ...Typography.normal }}
-            >
-              { product.name } - { product.stock } st
-            </Text>
+    return (
+      <Text
+        key={index}
+        style={{ ...Typography.normal }}
+      >
+        { product.name } - { product.stock } st
+      </Text>
+    );
   });
   
   return (
@@ -32,11 +20,11 @@ function StockList({products, setProducts}) {
   );
 }
 
-export default function Stock({products, setProducts}) {
+export default function Stock({products}) {
   return (
     <View>
       <Text style={{...Typography.header2}}>Lagerförteckning</Text>
-      <StockList products={products} setProducts={setProducts}/>
+      <StockList products={products} />
     </View>
   );
 }

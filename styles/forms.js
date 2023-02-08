@@ -46,3 +46,7 @@ export const input = {
     borderColor: "#ccc",
     borderRadius: 3,
 };
+
+// export const input:invalid = {
+
+// };
