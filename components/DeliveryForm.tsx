@@ -20,7 +20,24 @@ export default function DeliveryForm({ navigation, products, setProducts }) {
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
     
     function validateForm() {
-        return !!delivery.product_id && !!delivery.amount && !!delivery.delivery_date;
+        let invalidFields = new Array;
+    
+        if (!delivery.product_id || delivery.product_id === -1) {
+            invalidFields.push("Produkt");
+        } 
+        if (!delivery.amount || delivery.amount <= 0) {
+            invalidFields.push("Antal");
+        }
+        if (!delivery.delivery_date) {
+            invalidFields.push("Datum");
+        }
+        
+        if (invalidFields.length === 0) {
+            addDelivery();
+        } else {
+            // REVIEW Testa!
+            return <Text>Ogiltigt formulär, kontrollera fält: {invalidFields.join(", ")}.</Text>
+        } 
     }
     
     async function addDelivery() {
@@ -62,8 +79,9 @@ export default function DeliveryForm({ navigation, products, setProducts }) {
             
             <Text style={ Typography.label }>Datum</Text>
             <DateDropDown 
-                delivery={delivery}
-                setDelivery={setDelivery}                
+                formObject={delivery}
+                formObjectProp={"delivery_date"}
+                setFormObject={setDelivery}                
             />
 
             <Text style={ Typography.label }>Kommentar</Text>
@@ -77,7 +95,6 @@ export default function DeliveryForm({ navigation, products, setProducts }) {
 
             <Button
                 title="Gör inleverans"
-                disabled={!validateForm()}
                 onPress={() => {
                     validateForm();
                 }}

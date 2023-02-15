@@ -6,27 +6,33 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { Base } from './styles';
 
-import productModel from "./models/products";
-
 import Home from "./components/Home";
 import Pick from "./components/Pick";
 import Deliveries from './components/Deliveries';
+import Invoices from './components/invoices/Invoices';
+import Auth from './components/auth/Auth';
 
+import productModel from "./models/products";
+import authModel from "./models/auth";
 
 const routeIcons = {
   "Lager": "home",
   "Plock": "list",
-  "Leveranser": "ios-car",
+  "Inleverans": "ios-car",
+  "Faktura": "cash-outline",
+  "Logga in": "lock-closed",
 };
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     (async () => {
       setProducts(await productModel.getProducts());
+      setIsLoggedIn(await authModel.loggedIn());
     })();
   }, []);
 
@@ -48,11 +54,19 @@ export default function App() {
             {() => <Home products={products} />}
           </Tab.Screen>
           <Tab.Screen name="Plock">
-            {() => < Pick setProducts={setProducts} />}
+            {() => <Pick setProducts={setProducts} />}
           </Tab.Screen>
-          <Tab.Screen name="Leveranser">
-          {()=> <Deliveries products={products} setProducts={setProducts} />}
+          <Tab.Screen name="Inleverans">
+            {() => <Deliveries products={products} setProducts={setProducts} />}
           </Tab.Screen>
+          {isLoggedIn ?
+            <Tab.Screen name="Faktura">
+              {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
+            </Tab.Screen> :
+            <Tab.Screen name="Logga in">
+              {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
+            </Tab.Screen>
+          }
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

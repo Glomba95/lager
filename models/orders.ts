@@ -12,6 +12,12 @@ const orders = {
 
         return result.data;
     },
+    getOrder: async function getOrder(order_id) {
+        const response = await fetch(`${config.base_url}/orders/${order_id}?api_key=${config.api_key}`);
+        const result = await response.json();
+
+        return result.data;
+    },
     pickOrder: async function pickOrder(order: Order) {
         await Promise.all(order.order_items.map(async (order_item: Partial<OrderItem>) => {
             let updatedProduct = {
@@ -31,7 +37,7 @@ const orders = {
             api_key: config.api_key,
         };
         
-        await orders.updateOrder(updatedOrder);
+        orders.updateOrder(updatedOrder);
     },
     updateOrder: async function updateOrder(order: Partial<Order>) {
         order.api_key = config.api_key;
