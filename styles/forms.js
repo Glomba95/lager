@@ -47,6 +47,10 @@ export const input = {
     borderRadius: 3,
 };
 
+export const tableCellNumeric = {
+    paddingRight: 10,
+};
+
 // export const input:invalid = {
 
 // };

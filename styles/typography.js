@@ -1,14 +1,16 @@
 // import { BottomTabBarHeightCallbackContext } from "@react-navigation/bottom-tabs";
 
 export const header1 = {
+    alignSelf: "center",
     fontSize: 42,
-    marginLeft: 18,
-    marginBottom: 28,
+    // marginLeft: 18,
+    marginTop: 18,
+    marginBottom: 30,
 };
 
 export const header2 = {
     fontSize: 34,
-    marginLeft: 18,
+    marginLeft: 10,
     marginBottom: 28,
 };
 

@@ -1,9 +1,8 @@
 export const base = {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingLeft: 12,
-    paddingRight: 12,
-    paddingTop: 18,
+    backgroundColor: 'aliceblue',
+    padding: 20,
+    paddingTop: 30,
 };
 
 export const container = {

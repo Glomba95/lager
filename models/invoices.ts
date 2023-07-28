@@ -32,7 +32,7 @@ const invoices = {
         let dueDate = new Date(invoice.creation_date);
         dueDate.setDate(dueDate.getDate() + 30);
         
-        invoice.due_date = dueDate;
+        invoice.due_date = dueDate.toLocaleDateString('sv-SE');
         invoice.total_price = totalPrice;
         invoice.api_key = config.api_key;
         
@@ -47,29 +47,6 @@ const invoices = {
                 },
                 method: 'POST'
             });
-            
-            console.log(response);
-        
-        // invoice.api_key = config.api_key;
-        
-        // try {
-        //     await fetch(`${config.base_url}/invoices`, {
-        //         body: JSON.stringify(invoice),
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         method: 'POST'
-        //     });
-            
-        //     let updatedOrder = {
-        //         id: invoice.order_id,
-        //         name: invoice.name,
-        //         status_id: 600,
-        //         api_key: config.api_key
-        //     };
-            
-        //     orders.updateOrder(updatedOrder);
-            
         } catch (error) {
             console.log("Error occured when creating invoice.");
             console.log(error);

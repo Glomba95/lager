@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { View, Text, Button } from "react-native";
-import { Base, Typography } from '../styles';
+import { Base, Typography } from '../../styles';
 
-import Order from "../interfaces/order";
-import orderModel from "../models/orders";
+import Order from "../../interfaces/order";
+import orderModel from "../../models/orders";
 
 
 export default function OrderList({ route, navigation }) {
@@ -41,7 +41,7 @@ export default function OrderList({ route, navigation }) {
     return (
         <View style={Base.base}>
             <Text style={Typography.header2}>
-                Ordrar redo att plockas
+                Ordrar att plocka
             </Text>
             {listOfOrders}
         </View>

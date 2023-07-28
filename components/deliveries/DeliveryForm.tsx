@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { ScrollView, Text, TextInput, Button } from "react-native";
-import { Base, Typography, Forms } from '../styles';
+import { Base, Typography, Forms } from '../../styles';
 
-import productModel from '../models/products';
-import deliveryModel from '../models/deliveries';
+import productModel from '../../models/products';
+import deliveryModel from '../../models/deliveries';
 
 import ProductDropDown from './ProductDropDown';
-import DateDropDown from './DateDropDown';
+import DateDropDown from '../DateDropDown';
 
-import Delivery from '../interfaces/delivery';
-import Product from '../interfaces/product';
+import Delivery from '../../interfaces/delivery';
+import Product from '../../interfaces/product';
 
 
 

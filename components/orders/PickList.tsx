@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { View, Text, Button } from "react-native";
 
-import orderModel from "../models/orders";
-import productModel from "../models/products";
+import orderModel from "../../models/orders";
+import productModel from "../../models/products";
 
-import Product from "../interfaces/product";
+import Product from "../../interfaces/product";
 
-import { Base, Typography } from "../styles";
+import { Base, Typography } from "../../styles";
 
 export default function PickList({route, navigation, setProducts}) {
     const { order } = route.params;

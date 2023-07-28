@@ -7,8 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Base } from './styles';
 
 import Home from "./components/Home";
-import Pick from "./components/Pick";
-import Deliveries from './components/Deliveries';
+import Pick from "./components/orders/Pick";
+import Deliveries from './components/deliveries/Deliveries';
 import Invoices from './components/invoices/Invoices';
 import Auth from './components/auth/Auth';
 

@@ -33,7 +33,7 @@ export default function InvoicesList({ route, navigation, setIsLoggedIn }) {
         return (
             <DataTable.Row key={index}>
                 <DataTable.Cell>{invoice.name}</DataTable.Cell>
-                <DataTable.Cell numeric>{invoice.total_price}</DataTable.Cell>
+                <DataTable.Cell>{invoice.total_price} sek</DataTable.Cell>
                 <DataTable.Cell>{invoice.due_date}</DataTable.Cell>
             </DataTable.Row>
         );

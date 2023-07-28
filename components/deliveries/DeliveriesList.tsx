@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { View, Text, Button, ScrollView } from 'react-native';
-import { Base, Typography, Cards } from '../styles';
+import { Base, Typography, Cards } from '../../styles';
 
-import deliveryModel from '../models/deliveries';
+import deliveryModel from '../../models/deliveries';
 
 export default function DeliveriesList({ route, navigation }) {
     const { reload } = route.params || false;

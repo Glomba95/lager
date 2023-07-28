@@ -8,13 +8,14 @@ import Stock from './Stock';
 export default function Home({products}) {
   return (
       <ScrollView style={Base.base}>
-          <Text style={Typography.header1}>Lager-Appen</Text>
+          <Text style={Typography.header1}>Lagr1</Text>
           <Image 
             source={warehouse} 
             style={{ 
               width: 320, 
               height: 240, 
-              marginBottom: 28 
+              alignSelf: "center", 
+              marginBottom: 42, 
             }} />
           <Stock products={products} />
       </ScrollView>
