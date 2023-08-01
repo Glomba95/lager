@@ -1,6 +1,6 @@
 export const base = {
     flex: 1,
-    backgroundColor: 'aliceblue',
+    backgroundColor: 'whitesmoke',
     padding: 20,
     paddingTop: 30,
 };

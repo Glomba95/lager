@@ -29,7 +29,7 @@ export default function DeliveriesList({ route, navigation }) {
                 key={index}
                 style={Cards.card}>
                 <Text style={Cards.cardTitle}>{ delivery.product_name } - { delivery.amount } st</Text>
-                <Text style={Cards.cardInfo}>Levererad: { delivery.delivery_date }</Text>
+                <Text style={Cards.cardInfo}>Mottagen: { delivery.delivery_date }</Text>
                 <Text style={ Cards.cardInfo }>Kommentar: {delivery.comment}</Text>
             </View>
         );

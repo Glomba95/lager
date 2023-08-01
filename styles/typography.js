@@ -44,6 +44,14 @@ export const bold = {
     marginBottom: 28,
 };
 
+export const boldText = {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+};
+
 export const boldInline = {
     fontSize: 20,
     fontWeight: 'bold',

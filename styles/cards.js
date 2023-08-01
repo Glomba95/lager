@@ -8,13 +8,26 @@ export const card = {
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
-    shadowOpacity: 0.26,
+    shadowOpacity: 0.16,
     elevation: 6,
     backgroundColor: 'white',
     padding: 20,
     borderRadius: 10,
-    marginVertical: 4,
+    marginBottom: 20,
     width: '90%',
+};
+
+export const card2 = {
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.16,
+    elevation: 6,
+    backgroundColor: 'white',
+    padding: 20,
+    borderColor: 'black',
+    borderRadius: 10,
+    marginBottom: 12,
 };
 
 export const cardTitle = {
@@ -22,9 +35,8 @@ export const cardTitle = {
     display: 'block',
     color: '#222',
     fontWeight: '600',
-    // backgroundColor: '#5c9',
     paddingVertical: 4,
-    paddingHorizontal: 12,
+    paddingHorizontal: 24,
     marginTop: 0,
 };
 
@@ -32,7 +44,7 @@ export const cardInfo = {
     // fontSize: 1.12,
     color: '#444',
     paddingVertical: 4,
-    paddingHorizontal: 12,
+    paddingHorizontal: 24,
 };
 
 // export const card = {
