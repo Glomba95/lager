@@ -5,8 +5,12 @@ import AuthFields from './AuthFields';
 import Auth from '../../interfaces/auth';
 import AuthModel from '../../models/auth';
 
-export default function Login({navigation, setIsLoggedIn}) {
+export default function Login(props:{
+    navigation:any, 
+    setIsLoggedIn:(isLoggedIn:Boolean)=>void
+}) {
     const [auth, setAuth] = useState<Partial<Auth>>({});
+    const {navigation, setIsLoggedIn}=props;
 
     async function doLogin() {
         if (auth.email && auth.password) {

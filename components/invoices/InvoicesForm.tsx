@@ -22,64 +22,42 @@ export default function InvoicesForm({navigation}) {
     useEffect(() => {
         (async () => {
             let orders = await orderModel.getOrders();
-            console.log("state", orders);
             
-            setInvoiceOrders(orders.filter(order => order.status === "Packad" || order.status === "Skickad" ))
+            setInvoiceOrders(orders.filter(order => order.status === "Packad"))
         })();
       }, []);
     
-    console.log("list", invoiceOrders);
-    
     async function createInvoice() {
-        await invoiceModel.createInvoice(invoice);
+        const response = await invoiceModel.createInvoice(invoice);
         
         navigation.navigate("List", {reload: true});
     }
     
-    function FormComponents() {
-        return (
-            <ScrollView style={Base.base}>
-                <Text style={Typography.header2}>Skapa faktura</Text>
-    
-                <Text style={Typography.label}>Order</Text>
-                <OrderDropDown
-                    orderList={invoiceOrders}
-                    invoice={invoice}
-                    setInvoice={setInvoice}
-                />
-                
-                <Text style={Typography.label}>Datum</Text>
-                <DateDropDown
-                    formObject={invoice}
-                    formObjectProp={"creation_date"}
-                    setFormObject={setInvoice}
-                />
-                
-                <Button
-                    title="Skapa Faktura"
-                    onPress={() => {
-                        createInvoice();
-                    }}
-                />
-            </ScrollView>
-        );
-    }
-    
-    function NoMoreOrders() {
-        return(
-            <View>
-                <Text style={Typography.header2}>Allt fakturerat!</Text>
-                <Text style={Typography.normal}>Det finns inga ordrar med status 'Packad' eller 'Skickad' att skapa faktura åt för tillfället.</Text>
-            </View>
-        );
-    }
-
     return (
-        <View style={Base.base}>
-            {invoiceOrders.length === 0
-                ? <NoMoreOrders />
-                : <FormComponents />}
-        </View>
+        <ScrollView style={Base.base}>
+            <Text style={Typography.header2}>Skapa faktura</Text>
+
+            <Text style={Typography.label}>Order</Text>
+            <OrderDropDown
+                orderList={invoiceOrders}
+                invoice={invoice}
+                setInvoice={setInvoice}
+            />
+            
+            <Text style={Typography.label}>Datum</Text>
+            <DateDropDown
+                formObject={invoice}
+                formObjectProp={"creation_date"}
+                setFormObject={setInvoice}
+            />
+            
+            <Button
+                title="Skapa Faktura"
+                onPress={() => {
+                    createInvoice();
+                }}
+            />
+        </ScrollView>
     );
 }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ScrollView, Text, View, StyleSheet } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { MapMarker } from "react-native-maps";
 import { Marker } from "react-native-maps";
 import * as Location from 'expo-location';
 import { Base, Cards, Typography } from "../../styles";
@@ -11,7 +11,7 @@ export default function ShipOrder({ route }) {
     const { order } = route.params;
     const [ marker, setMarker ] = useState(null);
     const [ locationMarker, setLocationMarker ] = useState(null);
-    const [ errorMessage, setErrorMessage ] = useState(null);
+    const [ errorMessage, setErrorMessage ] = useState<string|null>(null);
     
     // For target location
     useEffect(() => {

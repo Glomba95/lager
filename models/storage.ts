@@ -11,7 +11,7 @@ const storage = {
 
             await AsyncStorage.setItem('@token', jsonValue);
         } catch (e) {
-            // TODO saving error
+            console.log("Error occured during attempt to store auth-token.");   
         }
     },
     readToken: async function readToken(): Promise<any> {
@@ -19,7 +19,7 @@ const storage = {
             const jsonValue = await AsyncStorage.getItem('@token');
             return jsonValue != null ? JSON.parse(jsonValue) : null;
         } catch (e) {
-            // TODO error reading value
+            console.log("Error occured while attempting to read auth-token.");   
         }
     },
     deleteToken: async function deleteToken() {

@@ -6,12 +6,7 @@ import Order from "../../interfaces/order";
 import orderModel from "../../models/orders";
 
 export default function ShipList({ route, navigation }) {
-    // const { reload } = route.params || false;
     const [allOrders, setAllOrders] = useState<Order[]>([]);
-
-    // if (reload) {
-    //     reloadOrders();
-    // }
 
     async function reloadOrders() {
         setAllOrders(await orderModel.getOrders());
@@ -22,7 +17,7 @@ export default function ShipList({ route, navigation }) {
     }, []);
         
     const listOfOrders = allOrders
-        .filter(order => order.status === "Packad")
+        .filter(order => order.status === "Fakturerad")
         .map((order, index) => {
             return (
                 <Button
