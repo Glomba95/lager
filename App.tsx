@@ -21,9 +21,9 @@ const routeIcons = {
   "Lager": "home",
   "Plock": "list",
   "Inleverans": "ios-car",
+  "Leverans": "map",
   "Faktura": "cash-outline",
   "Logga in": "lock-closed",
-  "Leverans": "home"
 };
 
 const Tab = createBottomTabNavigator();
