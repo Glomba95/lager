@@ -63,6 +63,7 @@ export default function App() {
             <Tab.Screen name="Inleverans">
               {() => <Deliveries products={products} setProducts={setProducts} />}
             </Tab.Screen>
+            <Tab.Screen name="Leverans" component={Ship} />
             {isLoggedIn ?
               <Tab.Screen name="Faktura">
                 {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
@@ -71,7 +72,6 @@ export default function App() {
                 {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
               </Tab.Screen>
             }
-              <Tab.Screen name="Leverans" component={Ship} />
           </Tab.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
